@@ -1,0 +1,33 @@
+{namespace vh = LBR\Template\ViewHelpers}
+
+<f:layout name="Plain" />
+
+<f:section name="main">
+	<vh:format.cleanup>
+		<f:switch expression="{today -> f:count()}">
+			<f:case value="1"><f:render section="oneTime" arguments="{today:today}" /></f:case>
+			<f:case value="2"><f:render section="twoTimes" arguments="{today:today}" /></f:case>
+		</f:switch>
+	</vh:format.cleanup>
+</f:section>
+
+<f:section name="oneTime">
+	<f:switch expression="{today.0.type}">
+		<f:case value="singletime">{f:translate(key:"today_oneTime_singletime", arguments:"{0:today.0.value}")}</f:case>
+		<f:case value="doubletime">{f:translate(key:"today_oneTime_doubletime", arguments:"{0:today.0.value1, 1:today.0.value2}")}</f:case>
+		<f:case value="string">{f:translate(key:"today_oneTime_string", arguments:"{0:today.0.value}")}</f:case>
+	</f:switch>
+</f:section>
+
+<f:section name="twoTimes">
+	<f:switch expression="{today.0.type}">
+		<f:case value="singletime">{f:translate(key:"today_twoTimes_partOne_singletime", arguments:"{0:today.0.value}")}</f:case>
+		<f:case value="doubletime">{f:translate(key:"today_twoTimes_partOne_doubletime", arguments:"{0:today.0.value1, 1:today.0.value2}")}</f:case>
+		<f:case value="string">{f:translate(key:"today_twoTimes_partOne_string", arguments:"{0:today.0.value}")}</f:case>
+	</f:switch>
+	<f:switch expression="{today.1.type}">
+		<f:case value="singletime">{f:translate(key:"today_twoTimes_partTwo_singletime", arguments:"{0:today.1.value}")}</f:case>
+		<f:case value="doubletime">{f:translate(key:"today_twoTimes_partTwo_doubletime", arguments:"{0:today.1.value1, 1:today.1.value2}")}</f:case>
+		<f:case value="string">{f:translate(key:"today_twoTimes_partTwo_string", arguments:"{0:today.1.value}")}</f:case>
+	</f:switch>
+</f:section>

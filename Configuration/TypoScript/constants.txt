@@ -1,0 +1,15 @@
+
+plugin.tx_mabopeningtimes {
+	view {
+		# cat=plugin.tx_mabopeningtimes/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:mab_openingtimes/Resources/Private/Templates/
+		# cat=plugin.tx_mabopeningtimes/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:mab_openingtimes/Resources/Private/Partials/
+		# cat=plugin.tx_mabopeningtimes/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:mab_openingtimes/Resources/Private/Layouts/
+	}
+	
+	settings {
+		configurationFile = typo3conf/ext/mab_openingtimes/Resources/Public/ExampleConfiguration.txt
+	}
+}

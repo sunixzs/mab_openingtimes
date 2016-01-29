@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2015-11-18T10:16:17Z" product-name="mab_picture_references">
+		<header/>
+		<body>
+			<trans-unit id="today_oneTime_singletime">
+				<source><![CDATA[Heute offen bis <span class="value">%1$s Uhr</span>]]></source>
+			</trans-unit>
+			<trans-unit id="today_oneTime_doubletime">
+				<source><![CDATA[Heute offen <span class="value">%1$s–%2$s Uhr</span>]]></source>
+			</trans-unit>
+			<trans-unit id="today_oneTime_string">
+				<source><![CDATA[Heute %1$s]]></source>
+			</trans-unit>
+			<trans-unit id="today_twoTimes_partOne_singletime">
+				<source><![CDATA[Heute offen <span class="value">%1$s Uhr</span>]]></source>
+			</trans-unit>
+			<trans-unit id="today_twoTimes_partOne_doubletime">
+				<source><![CDATA[Heute offen <span class="value">%1$s–%2$s</span>]]></source>
+			</trans-unit>
+			<trans-unit id="today_twoTimes_partOne_string">
+				<source><![CDATA[Heute %1$s]]></source>
+			</trans-unit>
+			<trans-unit id="today_twoTimes_partTwo_singletime">
+				<source><![CDATA[ und <span class="value">%1$s Uhr</span>]]></source>
+			</trans-unit>
+			<trans-unit id="today_twoTimes_partTwo_doubletime">
+				<source><![CDATA[ und <span class="value">%1$s–%2$s Uhr</span>]]></source>
+			</trans-unit>
+			<trans-unit id="today_twoTimes_partTwo_string">
+				<source><![CDATA[ und %1$s]]></source>
+			</trans-unit>
+			
+			<trans-unit id="table_oneTime_singletime">
+				<source>%1$s Uhr</source>
+			</trans-unit>
+			<trans-unit id="table_oneTime_doubletime">
+				<source>%1$s–%2$s Uhr</source>
+			</trans-unit>
+			<trans-unit id="table_oneTime_string">
+				<source>%1$s</source>
+			</trans-unit>
+			<trans-unit id="table_twoTimes_partOne_singletime">
+				<source>%1$s Uhr</source>
+			</trans-unit>
+			<trans-unit id="table_twoTimes_partOne_doubletime">
+				<source>%1$s–%2$s Uhr</source>
+			</trans-unit>
+			<trans-unit id="table_twoTimes_partOne_string">
+				<source>%1$s</source>
+			</trans-unit>
+			<trans-unit id="table_twoTimes_partTwo_singletime">
+				<source>und %1$s Uhr</source>
+			</trans-unit>
+			<trans-unit id="table_twoTimes_partTwo_doubletime">
+				<source>und %1$s–%2$s Uhr</source>
+			</trans-unit>
+			<trans-unit id="table_twoTimes_partTwo_string">
+				<source>und %1$s Uhr</source>
+			</trans-unit>
+			
+			<trans-unit id="headline_opening_times">
+				<source>Reguläre Öffnungszeiten</source>
+			</trans-unit>
+			<trans-unit id="headline_future_opening_times">
+				<source>Weitere Öffnungszeiten</source>
+			</trans-unit>
+			
+			<trans-unit id="monday">
+				<source>Montag</source>
+			</trans-unit>
+			<trans-unit id="tuesday">
+				<source>Dienstag</source>
+			</trans-unit>
+			<trans-unit id="wednesday">
+				<source>Mittwoch</source>
+			</trans-unit>
+			<trans-unit id="thursday">
+				<source>Donnerstag</source>
+			</trans-unit>
+			<trans-unit id="friday">
+				<source>Freitag</source>
+			</trans-unit>
+			<trans-unit id="saturday">
+				<source>Samstag</source>
+			</trans-unit>
+			<trans-unit id="sunday">
+				<source>Sonntag</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

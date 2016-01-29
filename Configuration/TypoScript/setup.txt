@@ -1,0 +1,12 @@
+
+plugin.tx_mabopeningtimes {
+	view {
+		templateRootPaths.0 = {$plugin.tx_mabopeningtimes.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_mabopeningtimes.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_mabopeningtimes.view.layoutRootPath}
+	}
+	
+	settings {
+		configurationFile = {$plugin.tx_mabopeningtimes.settings.configurationFile}
+	}
+}
