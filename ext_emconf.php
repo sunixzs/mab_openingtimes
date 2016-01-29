@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Opening times',
-	'description' => '',
+	'description' => 'Displays opening times each weekday or as table with additional overrides on days noted by date.',
 	'category' => 'plugin',
 	'author' => 'Marcel Briefs',
 	'author_email' => 't3@lbrmedia.net',
