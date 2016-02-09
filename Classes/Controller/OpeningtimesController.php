@@ -130,7 +130,11 @@ class OpeningtimesController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 				$dtObj = new \DateTime ( $key );
 				$dtObj->setTime ( 12, 0, 0 );
 				if ($dtObj && $dtObj > $todayObj) {
-					$configuration[ 'future' ][ $key ][ 'values' ] = $this->determineValue ( $value );
+					if (!isset($configuration[ 'future' ][ $key ])) {
+						$configuration[ 'future' ][ $key ] = [];
+						$configuration[ 'future' ][ $key ][ 'values' ] = [];
+					}
+					$configuration[ 'future' ][ $key ][ 'values' ][] = $this->determineValue ( $value );
 					$configuration[ 'future' ][ $key ][ 'DateTime' ] = $dtObj;
 				}
 			} 

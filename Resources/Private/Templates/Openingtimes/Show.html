@@ -4,71 +4,70 @@
 
 	<f:flashMessages />
 	
-	<h3>{f:translate(key:'headline_opening_times')}</h3>
-	<div class="grid-group opening-times">
-		<f:for each="{weekdays}" as="weekday" key="key">
-			<f:render section="weekday" arguments="{llKey:key, weekday:weekday}" />
-		</f:for>
-	</div>
-	
 	<f:if condition="{future -> f:count()}">
-		<div class="page-padding-top">
-			<h3>{f:translate(key:'headline_future_opening_times')}</h3>
-			<div class="grid-group future opening-times">
-				<f:for each="{future}" as="day">
-					<f:render section="day" arguments="{day:day}" />
-				</f:for>
-			</table>
-		</div>
+		<f:then>
+			<div class="grid-section grid-group">
+				<div class="grid-col span_1_of_2">
+					<h2 class="transform-uppercase">{f:translate(key:'headline_opening_times')}</h2>
+					<dl><f:for each="{weekdays}" as="weekday" key="key"><f:render section="weekday" arguments="{llKey:key, weekday:weekday}" /></f:for></dl>
+				</div>
+				<div class="grid-col span_1_of_2">
+					<h2 class="transform-uppercase">{f:translate(key:'headline_future_opening_times')}</h2>
+					<dl><f:for each="{future}" as="day"><f:render section="day" arguments="{day:day}" /></f:for></dl>
+				</div>
+			</div>
+		</f:then>
+		<f:else>
+			<dl><f:for each="{weekdays}" as="weekday" key="key"><f:render section="weekday" arguments="{llKey:key, weekday:weekday}" /></f:for></dl>
+		</f:else>
 	</f:if>
-	
 </f:section>
 
 <f:section name="weekday">
 	<f:if condition="{weekday -> f:count()}">
-		<div class="grid-section">
-			<div class="grid-col span_1_of_3"><strong>{f:translate(key:llKey)}</strong></div>
+		<dt><strong>{f:translate(key:llKey)}</strong></dt>
+		<dd>
 			<f:switch expression="{weekday -> f:count()}">
 				<f:case value="1"><f:render section="oneTime" arguments="{entry:weekday}" /></f:case>
 				<f:case value="2"><f:render section="twoTimes" arguments="{entry:weekday}" /></f:case>
 			</f:switch>
-		</div>
+		</dd>
 	</f:if>
 </f:section>
 
 <f:section name="day">
 	<f:if condition="{day.values -> f:count()}">
-		<div class="grid-section">
-			<div class="grid-col span_1_of_3 text-overflow-ellipsis"><strong>{day.DateTime -> f:format.date(format:'%A, %e. %B %Y')}</strong></div>
-			<f:switch expression="{day.values -> f:count()}">
-				<f:case value="1"><f:render section="oneTime" arguments="{entry:day.values}" /></f:case>
-				<f:case value="2"><f:render section="twoTimes" arguments="{entry:day.values}" /></f:case>
-			</f:switch>
-		</div>
+		<dt><strong>{day.DateTime -> f:format.date(format:'%A, %e. %B %Y')}</strong></dt>
+		<dd>
+			<f:for each="{day.values}" as="value">
+				<span class="entry">
+					<f:switch expression="{value -> f:count()}">
+						<f:case value="1"><f:render section="oneTime" arguments="{entry:value}" /></f:case>
+						<f:case value="2"><f:render section="twoTimes" arguments="{entry:value}" /></f:case>
+					</f:switch>
+				</span>
+			</f:for>
+		</dd>
 	</f:if>
 </f:section>
 
 <f:section name="oneTime">
-	<div class="grid-col span_2_of_3">
-		<f:switch expression="{entry.0.type}">
-			<f:case value="singletime">{f:translate(key:"table_oneTime_singletime", arguments:"{0:entry.0.value}")}</f:case>
-			<f:case value="doubletime">{f:translate(key:"table_oneTime_doubletime", arguments:"{0:entry.0.value1, 1:entry.0.value2}")}</f:case>
-			<f:case value="string">{f:translate(key:"table_oneTime_string", arguments:"{0:entry.0.value}")}</f:case>
-		</f:switch>
-	</div>
+	<f:switch expression="{entry.0.type}">
+		<f:case value="singletime">{f:translate(key:"table_oneTime_singletime", arguments:"{0:entry.0.value}")}</f:case>
+		<f:case value="doubletime">{f:translate(key:"table_oneTime_doubletime", arguments:"{0:entry.0.value1, 1:entry.0.value2}")}</f:case>
+		<f:case value="string">{f:translate(key:"table_oneTime_string", arguments:"{0:entry.0.value}")}</f:case>
+	</f:switch>
 </f:section>
 
 <f:section name="twoTimes">
-	<div class="grid-col span_2_of_3">
-		<f:switch expression="{entry.0.type}">
-			<f:case value="singletime">{f:translate(key:"table_twoTimes_partOne_singletime", arguments:"{0:entry.0.value}")}</f:case>
-			<f:case value="doubletime">{f:translate(key:"table_twoTimes_partOne_doubletime", arguments:"{0:entry.0.value1, 1:entry.0.value2}")}</f:case>
-			<f:case value="string">{f:translate(key:"table_twoTimes_partOne_string", arguments:"{0:entry.0.value}")}</f:case>
-		</f:switch>
-		<f:switch expression="{entry.1.type}">
-			<f:case value="singletime">{f:translate(key:"table_twoTimes_partTwo_singletime", arguments:"{0:entry.1.value}")}</f:case>
-			<f:case value="doubletime">{f:translate(key:"table_twoTimes_partTwo_doubletime", arguments:"{0:entry.1.value1, 1:entry.1.value2}")}</f:case>
-			<f:case value="string">{f:translate(key:"table_twoTimes_partTwo_string", arguments:"{0:entry.1.value}")}</f:case>
-		</f:switch>
-	</div>
+	<f:switch expression="{entry.0.type}">
+		<f:case value="singletime">{f:translate(key:"table_twoTimes_partOne_singletime", arguments:"{0:entry.0.value}")}</f:case>
+		<f:case value="doubletime">{f:translate(key:"table_twoTimes_partOne_doubletime", arguments:"{0:entry.0.value1, 1:entry.0.value2}")}</f:case>
+		<f:case value="string">{f:translate(key:"table_twoTimes_partOne_string", arguments:"{0:entry.0.value}")}</f:case>
+	</f:switch>
+	<f:switch expression="{entry.1.type}">
+		<f:case value="singletime">{f:translate(key:"table_twoTimes_partTwo_singletime", arguments:"{0:entry.1.value}")}</f:case>
+		<f:case value="doubletime">{f:translate(key:"table_twoTimes_partTwo_doubletime", arguments:"{0:entry.1.value1, 1:entry.1.value2}")}</f:case>
+		<f:case value="string">{f:translate(key:"table_twoTimes_partTwo_string", arguments:"{0:entry.1.value}")}</f:case>
+	</f:switch>
 </f:section>
