@@ -54,6 +54,19 @@ class OpeningtimesController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		$configuration = $this->getConfiguration ();
 		$this->view->assign ( "weekdays", $configuration[ 'weekdays' ] );
 		$this->view->assign ( "future", $configuration[ 'future' ] );
+		$this->view->assign ( "summary", $configuration[ 'summary' ] );
+	}
+	
+	/**
+	 * action summary
+	 *
+	 * @return void
+	 */
+	public function summaryAction() {
+		$configuration = $this->getConfiguration ();
+		$this->view->assign ( "weekdays", $configuration[ 'weekdays' ] );
+		$this->view->assign ( "future", $configuration[ 'future' ] );
+		$this->view->assign ( "summary", $configuration[ 'summary' ] );
 	}
 	
 	/**
@@ -73,21 +86,22 @@ class OpeningtimesController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		$lines = file ( PATH_site . $this->settings[ 'configurationFile' ] );
 		
 		// iterate the lines and build configuration
-		$configuration = array (
+		$configuration = [ 
 				'today' => '',
-				'weekdays' => array (
-						'monday' => array (),
-						'tuesday' => array (),
-						'wednesday' => array (),
-						'thursday' => array (),
-						'friday' => array (),
-						'saturday' => array (),
-						'sunday' => array () 
-				),
-				'future' => array () 
-		);
+				'weekdays' => [ 
+						'monday' => [ ],
+						'tuesday' => [ ],
+						'wednesday' => [ ],
+						'thursday' => [ ],
+						'friday' => [ ],
+						'saturday' => [ ],
+						'sunday' => [ ] 
+				],
+				'future' => [ ],
+				'summary' => [ ] 
+		];
 		$todayObj = new \DateTime ();
-		$todayObj->setTime(12, 0, 0);
+		$todayObj->setTime ( 12, 0, 0 );
 		$weekday = strtolower ( $todayObj->format ( "l" ) );
 		$datekey = strtolower ( $todayObj->format ( "Y-m-d" ) );
 		
@@ -110,14 +124,16 @@ class OpeningtimesController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 				$configuration[ 'today' ] = $this->determineValue ( $value );
 			} else if ($key === $weekday) {
 				$configuration[ 'today' ] = $this->determineValue ( $value );
+			} else if ($key === "summary") {
+				$configuration[ 'summary' ] = $value;
 			} else if (preg_match ( '/^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$/', $key )) {
 				$dtObj = new \DateTime ( $key );
-				$dtObj->setTime(12, 0, 0);
+				$dtObj->setTime ( 12, 0, 0 );
 				if ($dtObj && $dtObj > $todayObj) {
 					$configuration[ 'future' ][ $key ][ 'values' ] = $this->determineValue ( $value );
 					$configuration[ 'future' ][ $key ][ 'DateTime' ] = $dtObj;
 				}
-			}
+			} 
 			
 			if (in_array ( $key, array (
 					'monday',
@@ -142,7 +158,7 @@ class OpeningtimesController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	 * @return array
 	 */
 	protected function determineValue($value) {
-		$retArr = array ();
+		$retArr = [ ];
 		$parts = \TYPO3\CMS\Extbase\Utility\ArrayUtility::trimExplode ( "|", $value );
 		foreach ( $parts as $num => $part ) {
 			if (preg_match ( '/^([0-9]|[0-1][0-9]|2[0-3]):([0-5][0-9])$/', $part )) {

@@ -10,3 +10,21 @@ plugin.tx_mabopeningtimes {
 		configurationFile = {$plugin.tx_mabopeningtimes.settings.configurationFile}
 	}
 }
+
+# Example Configuration to use in TypoScript
+#	footer_openingtimes = USER
+#	footer_openingtimes {
+#		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+#		extensionName = MabOpeningtimes
+#		pluginName = Pi3
+#		vendorName = MAB
+#		controller = Openingtimes
+#		switchableControllerActions {
+#			Openingtimes {
+#				1 = summary
+#			}
+#		}
+#		settings {
+#			configurationFile = fileadmin/50_Oeffnungszeiten/Konfiguration.txt
+#		}
+#	}

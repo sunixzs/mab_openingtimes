@@ -14,3 +14,9 @@ if (! defined ( 'TYPO3_MODE' )) {
 ), array (
 		'Openingtimes' => ''
 ) );
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin ( 'MAB.' . $_EXTKEY, 'Pi3', array (
+		'Openingtimes' => 'summary'
+), array (
+		'Openingtimes' => ''
+) );
